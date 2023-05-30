@@ -55,6 +55,15 @@
     <script src="../assets/vendor/js/template-customizer.js"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
+    <style>
+      .valid {
+        background-color: rgb(171, 250, 171);
+      }
+      
+      .invalid {
+        background-color: rgb(248, 206, 127);
+      }
+    </style>
   </head>
 
   <body>
@@ -1660,49 +1669,124 @@
                                 <ul class="list-unstyled mb-4 mt-3">
                                   <div class="mb-3" style="max-width: 600px; float:left;" >
                                   
-                                    <label for="firstname">First Name <span class="mandatory">*</span></label>
+                                    <label for="firstname">Enter First Name <span class="mandatory">*</span></label>
                                     <input
                                       type="text" size="30"
                                       class="form-control"
                                       id="firstname"
                                       name="firstname"
-                                      placeholder="Enter your First Name"
+                                      placeholder="eg: Dhanvika"
                                       max-length="25"
                                       pattern="[A-Za-z]+" />
                                   </div>
                                   <div class="mb-3" style="max-width: 600px; float:left; padding-left:5%;">
-                                    <label for="firstName">Last Name<span class="mandatory">*</span></label>
+                                    <label for="firstName">Enter Last Name<span class="mandatory">*</span></label>
                                     <input
                                       type="text" size="30"
                                       class="form-control"
                                       id="lastname"
                                       name="lastname"
-                                      placeholder="Enter your Last Name"
+                                      placeholder="eg: Raj"
                                       max-length="25" 
                                       pattern="[A-Za-z]+" /></div>
                                       
                                     <br>
-          
+                                    <div class="mb-3" style="max-width: 600px; float:left;">
+                                      <label for="CityName">Enter City Name<span class="mandatory">*</span></label>
+                                      <input
+                                        type="text" size="30"
+                                        class="form-control"
+                                        id="cityname"
+                                        name="cityname"
+                                        placeholder="eg: Hyderabad"
+                                        max-length="25" 
+                                        pattern="[A-Za-z]+" /></div>
+                                    <div class="mb-3" style="max-width: 600px; float:left; padding-left:5%;">
+                                      <label for="state">Enter State Name<span class="mandatory">*</span></label>
+                                      <input type="text"
+                                      class="form-control"
+                                      id="statename" 
+                                      name="statename" 
+                                      list="state-list"
+                                      size="30"
+                                      required
+                                      placeholder="Select your state">
+                                      <datalist id="state-list">
+                                        <option value="Andhra Pradesh">
+                                        <option value="Arunachal Pradesh">
+                                        <option value="Assam">
+                                          <option value="Bihar">
+                                          <option value="Chhattisgarh">
+                                          <option value="Goa">
+                                          <option value="Gujarat">
+                                          <option value="Haryana">
+                                          <option value="Himachal Pradesh">
+                                          <option value="Jharkhand">
+                                          <option value="Karnataka">
+                                          <option value="Kerala">
+                                          <option value="Madhya Pradesh">
+                                          <option value="Maharashtra">
+                                          <option value="Manipur">
+                                          <option value="Meghalaya">
+                                          <option value="Mizoram">
+                                          <option value="Nagaland">
+                                          <option value="Odisha">
+                                          <option value="Punjab">
+                                          <option value="Rajasthan">
+                                          <option value="Sikkim">
+                                          <option value="Tamil Nadu">
+                                          <option value="Telangana">
+                                          <option value="Tripura">
+                                          <option value="Uttar Pradesh">
+                                          <option value="Uttarakhand">
+                                          <option value="West Bengal">
+                                        <!-- Add more options for other states -->
+                                      </datalist>   
+                                    </div>   
                                   <div class="mb-3" style="max-width: 600px; float:left;">
-                                    <label for="phoneNumber">Phone Number<span class="mandatory">*</span></label><br>
-<input type="tel" id="phoneNumber" class="form-control"max-length="10" pattern="[0-9]{10}" name="phoneNumber" size="30" required placeholder="Enter your phone number">
+                                    <label for="phoneNumber">Enter Phone Number<span class="mandatory">*</span></label><br>
+<input type="tel" id="phoneNumber" class="form-control"max-length="10" pattern="[0-9]{10}" name="phoneNumber" size="30" required placeholder="eg: 9765438218">
                                   </div><br>
                                   <div class="mb-3" style="max-width: 600px; float:left; padding-left:5%;">
-                                    <label for="mobileNumber">Whatsapp Number<span class="mandatory">*</span></label><br>
-<input type="tel" id="mobileNumber" class="form-control" max-length="10"name="mobileNumber" pattern="[0-9]{10}" size="30" required placeholder="Enter your phone number">
+                                    <label for="mobileNumber">Enter Whatsapp Number<span class="mandatory">*</span></label><br>
+<input type="tel" id="mobileNumber" class="form-control" max-length="10"name="mobileNumber" pattern="[0-9]{10}" size="30" required placeholder="eg: 9765438218">
                                   </div>
+                                  
                                   <div class="mb-3" style="max-width: 600px; float:left;">
-                                    <label for="alphanumeric-input">Pan Card Number</label>
-                                    <input type="text" id="alphanumeric-input" class="form-control" max-length="10" size="30" name="alphanumeric" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" required placeholder="Enter pan card number">
+                                    <label for="alphanumeric-input">Enter Pan Card Number</label>
+                                    <input type="text" id="alphanumeric-input" class="form-control" max-length="10" size="30" name="alphanumeric" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" required placeholder="eg: KAYAB5361L" oninput="validatePAN(this)">
                                   </div>
                                   <div class="mb-3" style="max-width: 600px; float:left; padding-left:5%;">
-                                    <label for="digit-input">Adhaar Card Number</label>
-                                    <input type="text" id="digit-input" class="form-control" max-length="14" size="30" name="digits" pattern="\d{4} \d{4} \d{4}" required placeholder="Enter adhaar number">
+                                    <label for="digit-input">Enter Adhaar Card Number</label>
+                                    <input type="text" id="digit-input" class="form-control" max-length="14" size="30" name="digits" pattern="\d{4} \d{4} \d{4}" required placeholder="eg: 1111 2222 3333" oninput="validateAadhaar(this)">
                                   </div>
-                                  <div class="mb-3" style="max-width: 600px; float:left; ">
-                                    <label for="input-field">Enter a word:</label>
-  <input type="text" id="input-field" pattern="proof|bank|card" class="form-control" size="30" required placeholder="Please enter 'proof', 'bank', or 'card'">
-                                  </div>
+                                  <script>
+                                    function validateAadhaar(input) {
+                                      var aadhaarNumber = input.value;
+                                      var regex = /^\d{4} \d{4} \d{4}$/; // Aadhaar number regex pattern: 12 digits only
+                                
+                                      if (regex.test(aadhaarNumber)) {
+                                        input.classList.remove('invalid');
+                                        input.classList.add('valid');
+                                      } else {
+                                        input.classList.remove('valid');
+                                        input.classList.add('invalid');
+                                      }
+                                    }
+                                    
+                                    function validatePAN(input) {
+                                      var panNumber = input.value;
+                                      var regex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/; // PAN card number regex pattern: 5 uppercase letters, 4 digits, 1 uppercase letter
+                                
+                                      if (regex.test(panNumber)) {
+                                        input.classList.remove('invalid');
+                                        input.classList.add('valid');
+                                      } else {
+                                        input.classList.remove('valid');
+                                        input.classList.add('invalid');
+                                      }
+                                    }
+                                  </script>
                                   <div class="mb-3" style="max-width: 6px; align-content: center;">
                                     <input type="submit" value="Update" size="20" clas="form-control">
                                   </div>
