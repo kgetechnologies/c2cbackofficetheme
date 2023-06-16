@@ -205,7 +205,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="login.html" target="_blank">
+                      <a class="dropdown-item" href="login.html" >
                         <i class="ti ti-logout me-2 ti-sm"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
@@ -280,6 +280,12 @@
                           <div data-i18n="Invoice">Invoice</div>
                         </a>
                        
+                      </li>
+                      <li class="menu-item">
+                        <a href="AgentPage.html" class="menu-link">
+                           <i class="menu-icon tf-icons fab fa-adn mb-2"></i>
+                          <div data-i18n="Agents">Agents</div>
+                        </a>
                       </li>
                       <li class="menu-item">
                         <a href="User-Management.html" class="menu-link">
@@ -517,6 +523,26 @@
                 </div>
                 <!--/ Referral-->
 
+                  <!-- Line Chart -->
+                <div class="col-12 mb-4">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                      <div>
+                        <h5 class="card-title mb-0">Fixed Deposit</h5>
+                        <small class="text-muted">Day-to-Day Market interest</small>
+                      </div>
+                      <div class="d-sm-flex d-none align-items-center">
+                        <h5 class="fw-bold mb-0 me-3">$ 100,000</h5>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div id="lineChart"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Line Chart -->
+
+
                 <!-- Earning Reports -->
                 <div class="col-lg-6 mb-4">
                   <div class="card h-100">
@@ -527,18 +553,44 @@
                       </div>
                       <div class="dropdown">
                         <button
-                          class="btn p-0"
                           type="button"
-                          id="earningReportsId"
+                          class="btn dropdown-toggle px-0"
                           data-bs-toggle="dropdown"
-                          aria-haspopup="true"
                           aria-expanded="false">
-                          <i class="ti ti-dots-vertical ti-sm text-muted"></i>
+                          <i class="ti ti-calendar"></i>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="earningReportsId">
-                          <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Today</a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Yesterday</a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Last 7 Days</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Last 30 Days</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last Month</a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Master Card ********9856</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Visa Card ********5896 </a>
+                          </li>
+                        </ul>
                       </div>
                       <!-- </div> -->
                     </div>
@@ -678,6 +730,63 @@
                 </div>
                 <!--/ Support Tracker -->
 
+                 <!-- Bar Chart -->
+                 <div class="col-12 col-xl-4 mb-4 col-md-6">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <div>
+                        
+                        
+                        <p class="card-subtitle text-muted mb-1">Current Balance</p>
+                        <h4 class="card-title fw-bold mb-0">$74,382.72</h4>
+                        <small class="text-muted">Day-to-Day Transactions</small>
+                      </div>
+                      <div class="dropdown">
+                        <button
+                          type="button"
+                          class="btn dropdown-toggle px-0"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <i class="ti ti-calendar"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Today</a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Yesterday</a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Last 7 Days</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Last 30 Days</a
+                            >
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Current Month</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last Month</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div id="horizontalBarChart"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Bar Chart -->
+
                
                 <!-- Total Earning -->
                 <div class="col-12 col-xl-4 mb-4 col-md-6">
@@ -686,18 +795,41 @@
                       <h5 class="mb-0 card-title">Total Monthly Report </h5>
                       <div class="dropdown">
                         <button
-                          class="btn p-0"
                           type="button"
-                          id="totalEarning"
+                          class="btn dropdown-toggle px-0"
                           data-bs-toggle="dropdown"
-                          aria-haspopup="true"
                           aria-expanded="false">
-                          <i class="ti ti-dots-vertical ti-sm text-muted"></i>
+                          <i class="ti ti-calendar"></i>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="totalEarning">
-                          <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                          <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Today</a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Yesterday</a>
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Last 7 Days</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Last 30 Days</a
+                            >
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center"
+                              >Current Month</a
+                            >
+                          </li>
+                          <li>
+                            <a href="javascript:void(0);" class="dropdown-item d-flex align-items-center">Last Month</a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                     <div class="card-body">
@@ -775,6 +907,7 @@
     <script src="../assets/js/main.js"></script>
 
     <!-- Page JS -->
+    <script src="../assets/js/charts-apex.js"></script>
     <script src="../assets/js/dashboards-analytics.js"></script>
   </body>
 </html>
