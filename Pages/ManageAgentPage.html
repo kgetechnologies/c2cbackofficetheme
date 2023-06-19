@@ -726,7 +726,7 @@ th, td {
                                           var agentsData = [];
                                       
                                           function generateDummyData() {
-                                            for (var i = 1; i <= 50; i++) {
+                                            for (var i = 1; i <= 100; i++) {
                                               var agent = {
                                                 customerName: 'Customer ' + i,
                                                 mobileNo: generateMobileNumber(),
@@ -778,26 +778,51 @@ th, td {
                                           }
                                       
                                           function renderPagination() {
-                                            var paginationContainer = document.querySelector('.pagination-container');
-                                            paginationContainer.innerHTML = ''; // Clear existing pagination links
-                                      
-                                            var agentsPerPage = 10;
-                                            var totalPages = Math.ceil(agentsData.length / agentsPerPage);
-                                      
-                                            for (var i = 1; i <= totalPages; i++) {
-                                              var link = document.createElement('a');
-                                              link.textContent = i;
-                                              link.href = '#';
-                                              link.addEventListener('click', function() {
-                                                currentPage = parseInt(this.textContent);
-                                                renderAgentsTable();
-                                                updatePaginationLinks();
-                                              });
-                                              paginationContainer.appendChild(link);
-                                            }
-                                      
-                                            updatePaginationLinks();
-                                          }
+  var paginationContainer = document.querySelector('.pagination-container');
+  paginationContainer.innerHTML = ''; // Clear existing pagination links
+
+  var agentsPerPage = 10;
+  var totalPages = Math.ceil(agentsData.length / agentsPerPage);
+  var currentPageIndex = currentPage - 1;
+
+  var previousLink = document.createElement('a');
+  previousLink.textContent = '<<';
+  previousLink.href = '#';
+  previousLink.addEventListener('click', function() {
+    if (currentPage > 1) {
+      currentPage--;
+      renderAgentsTable();
+      updatePaginationLinks();
+    }
+  });
+  paginationContainer.appendChild(previousLink);
+
+  for (var i = 1; i <= totalPages; i++) {
+    var link = document.createElement('a');
+    link.textContent = i;
+    link.href = '#';
+    link.addEventListener('click', function() {
+      currentPage = parseInt(this.textContent);
+      renderAgentsTable();
+      updatePaginationLinks();
+    });
+    paginationContainer.appendChild(link);
+  }
+
+  var nextLink = document.createElement('a');
+  nextLink.textContent = '>>';
+  nextLink.href = '#';
+  nextLink.addEventListener('click', function() {
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderAgentsTable();
+      updatePaginationLinks();
+    }
+  });
+  paginationContainer.appendChild(nextLink);
+
+  updatePaginationLinks();
+}
                                       
                                           function updatePaginationLinks() {
                                             var paginationContainer = document.querySelector('.pagination-container');
