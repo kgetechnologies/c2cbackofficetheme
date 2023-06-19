@@ -256,6 +256,40 @@ th, td {
     display: block;
   }
 </style>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .editable {
+    cursor: pointer;
+  }
+
+  .editable[contenteditable="true"] {
+    background-color: white;
+  }
+
+  .pagination {
+    text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  }
+
+  .pagination a {
+    color: black;
+    float: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+  }
+
+  .pagination a.active {
+    background-color: #4d13aabd;
+    color: white;
+  }
+</style>
  
 
   </head>
@@ -862,9 +896,6 @@ th, td {
         
                                                                 
 
-  
-
-  <div id="pagination"></div>
 
   <script>
     function openPopup() {
@@ -912,99 +943,177 @@ th, td {
                                             <form id="formAuthentication" class="mb-3">           
                               <form id="formAuthentication" class="mb-3" style="padding-left:3%;">
                                 <small class="card-text text-uppercase"><h3><strong>CONFIGURE RATE SLAB</strong></h3></small>
-                                <div class="card-action-element">
-                                    <ul class="list-unstyled mb-4 mt-3">
-                                        <div>
-                                            <label>
-                                              <input type="radio" name="userRole" value="admin"> Admin
-                                            </label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <label>
-                                              <input type="radio" name="userRole" value="agent"> Agent
-                                            </label><br><br>
-                                          </div>
-                                          
-                                          <table>
-                                            <thead>
-                                              <tr>
-                                                <th>Card Brand</th>
-                                                <th>Card Type</th>
-                                                <th>Min Amount</th>
-                                                <th>Max Amount</th>
-                                                <th>Default Rate</th>
-                                                <th>Agent Rate</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <!-- Table rows with data -->
-                                              <tr>
-                                                <td>Brand 1</td>
-                                                <td>Type 1</td>
-                                                <td>$10</td>
-                                                <td>$100</td>
-                                                <td>5%</td>
-                                                <td  class="editable">10%</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Brand 2</td>
-                                                <td>Type 2</td>
-                                                <td>$20</td>
-                                                <td>$200</td>
-                                                <td>4%</td>
-                                                <td class="editable">8%</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Brand 3</td>
-                                                <td>Type 3</td>
-                                                <td>$60</td>
-                                                <td>$500</td>
-                                                <td>9%</td>
-                                                <td class="editable">19%</td>
-                                              </tr>
-                                              <tr>
-                                                <td>Brand 4</td>
-                                                <td>Type 4</td>
-                                                <td>$80</td>
-                                                <td>$120</td>
-                                                <td>15%</td>
-                                                <td  class="editable">5%</td>
-                                              </tr>
-                                              <!-- More table rows... -->
-                                            </tbody>
-                                          </table>
-                                          
-                                        
-                                          <script>
-                                            const userRoleRadios = document.querySelectorAll('input[name="userRole"]');
-                                            const editableCells = document.querySelectorAll('.editable');
-                                          
-                                            for (const radio of userRoleRadios) {
-                                              radio.addEventListener('change', handleRoleChange);
+                               
+                                    <form>
+                                      <label>
+                                        <input type="radio" name="userRole" value="admin" onclick="handleRoleChange()"> Admin
+                                      </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <label>
+                                        <input type="radio" name="userRole" value="agent" onclick="handleRoleChange()" checked> Agent
+                                      </label>
+                                      <br>
+                                      <br>
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>Card Brand</th>
+                                            <th>Card Type</th>
+                                            <th>Min Amount</th>
+                                            <th>Max Amount</th>
+                                            <th>Default Rate</th>
+                                            <th>Agent Rate</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody id="cards-table-body">
+                                          <!-- Table rows with data will be dynamically generated here -->
+                                        </tbody>
+                                      </table>
+                                      
+                                      </form>
+                                      </form>
+                                      <div class="pagination" id="pagination">
+                                        <!-- Pagination links will be dynamically generated here -->
+                                      </div>
+                              
+                                      <script>
+                                        var cardData = [];
+                              
+                                        var currentPage = 1;
+                              
+                                        function generateRandomData() {
+                                          for (var i = 0; i < 100; i++) {
+                                            var cardBrand = 'Visa';
+                                            var cardType = 'Normal';
+                                            var minAmount = getRandomAmount();
+                                            var maxAmount = getRandomAmount();
+                                            var defaultRate = getRandomRate();
+                                            var agentRate = getRandomRate();
+                              
+                                            var card = {
+                                              cardBrand: cardBrand,
+                                              cardType: cardType,
+                                              minAmount: minAmount,
+                                              maxAmount: maxAmount,
+                                              defaultRate: defaultRate,
+                                              agentRate: agentRate
+                                            };
+                              
+                                            cardData.push(card);
+                                          }
+                              
+                                          renderCardsTable();
+                                          renderCustomPagination();
+                                        }
+                              
+                                        function getRandomAmount() {
+                                          return Math.floor(Math.random() * 10000);
+                                        }
+                              
+                                        function getRandomRate() {
+                                          return Math.round(Math.random() * 10 * 100) / 100;
+                                        }
+                              
+                                        function renderCardsTable() {
+                                          var tableBody = document.getElementById('cards-table-body');
+                                          tableBody.innerHTML = '';
+                              
+                                          var startIndex = (currentPage - 1) * 10;
+                                          var endIndex = startIndex + 10;
+                              
+                                          for (var i = startIndex; i < endIndex; i++) {
+                                            var card = cardData[i];
+                              
+                                            if (!card) {
+                                              break;
                                             }
-                                          
-                                            function handleRoleChange(event) {
-                                              const userRole = event.target.value;
-                                              const isAdmin = userRole === 'admin';
-                                          
-                                              for (const cell of editableCells) {
-                                                if (isAdmin) {
-                                                  cell.contentEditable = 'true';
-                                                  cell.style.backgroundColor = 'white';
-                                                } else {
-                                                  cell.contentEditable = 'false';
-                                                  cell.style.backgroundColor = '#f9f9f9';
-                                                }
+                              
+                                            var row = document.createElement('tr');
+                              
+                                            var cardBrandCell = document.createElement('td');
+                                            cardBrandCell.textContent = card.cardBrand;
+                                            row.appendChild(cardBrandCell);
+                              
+                                            var cardTypeCell = document.createElement('td');
+                                            cardTypeCell.textContent = card.cardType;
+                                            row.appendChild(cardTypeCell);
+                              
+                                            var minAmountCell = document.createElement('td');
+                                            minAmountCell.textContent = '$' + card.minAmount;
+                                            row.appendChild(minAmountCell);
+                              
+                                            var maxAmountCell = document.createElement('td');
+                                            maxAmountCell.textContent = '$' + card.maxAmount;
+                                            row.appendChild(maxAmountCell);
+                              
+                                            var defaultRateCell = document.createElement('td');
+                                            defaultRateCell.textContent = card.defaultRate + '%';
+                                            row.appendChild(defaultRateCell);
+                              
+                                            var agentRateCell = document.createElement('td');
+                                            agentRateCell.textContent = card.agentRate + '%';
+                                            agentRateCell.contentEditable = false;
+                                            agentRateCell.classList.add('agent-editable');
+                                            row.appendChild(agentRateCell);
+                              
+                                            tableBody.appendChild(row);
+                                          }
+                                        }
+                              
+                                        function renderCustomPagination() {
+                                          var pagination = document.getElementById('pagination');
+                                          pagination.innerHTML = '';
+                              
+                                          var totalPages = Math.ceil(cardData.length / 10);
+                              
+                                          var paginationHTML = '';
+                              
+                                          if (totalPages > 1) {
+                                            if (currentPage > 1) {
+                                              paginationHTML += '<a href="#" onclick="goToPage(' + (currentPage - 1) + ')"><<</a>';
+                                            }
+                              
+                                            for (var i = 1; i <= totalPages; i++) {
+                                              if (i === currentPage) {
+                                                paginationHTML += '<a href="#" class="active" onclick="goToPage(' + i + ')">' + i + '</a>';
+                                              } else {
+                                                paginationHTML += '<a href="#" onclick="goToPage(' + i + ')">' + i + '</a>';
                                               }
                                             }
-                                          </script>
-                                             
-                                      </ul>    
-                                  </form>
-                            </form>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
+                              
+                                            if (currentPage < totalPages) {
+                                              paginationHTML += '<a href="#" onclick="goToPage(' + (currentPage + 1) + ')">>></a>';
+                                            }
+                                          }
+                              
+                                          pagination.innerHTML = paginationHTML;
+                                        }
+                              
+                                        function goToPage(page) {
+                                          currentPage = page;
+                                          renderCardsTable();
+                                          renderCustomPagination();
+                                        }
+                              
+                                        function handleRoleChange() {
+                                          var isAdmin = document.querySelector('input[name="userRole"]:checked').value === 'admin';
+                                          var agentRateCells = document.querySelectorAll('.agent-editable');
+                              
+                                          agentRateCells.forEach(function(cell) {
+                                            cell.contentEditable = isAdmin ? 'true' : 'false';
+                                            cell.style.backgroundColor = isAdmin ? 'white' : '#f9f9f9';
+                                          });
+                                        }
+                              
+                                        generateRandomData();
+                                      </script>
+                                    </form>
+                    
+                              
+                                  
+                                  
+                                </div>
+                                </div>
+                                </div>
                             </div>
                             </div>
                             </div>
