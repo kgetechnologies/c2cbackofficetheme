@@ -441,10 +441,145 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Shortcuts/</span> Bank Account</h4>
 
               
+               <!--Added Acc-->
+               <div class="card">
+                <h5 class="card-header">Your Bank Accounts 😇</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th>Bank Name</th>
+                        <th>Bank Type</th>
+                        <th>Account No.</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <tr>
+                        <td>
+                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                            <li
+                              
+                              data-popup="tooltip-custom"
+                              data-bs-placement="top"
+                              class="avatar avatar-xs pull-up"
+                              title="indian bank">
+                              <img src="1.png" alt="Avatar" class="rounded-circle" />
+                              Indian Bank
+                            </li>
+                          </ul>
+                          
+                          
+                        </td>
+                        <td>Government public sector</td>
+                        <td>
+                          ********32453
+                        </td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ></i>Disable</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                > Delete</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                            <li
+                              
+                              data-popup="tooltip-custom"
+                              data-bs-placement="top"
+                              class="avatar avatar-xs pull-up"
+                              title="Canara Bank">
+                              <img src="2.png" alt="Avatar" class="rounded-circle" />
+                              Canara Bank
+                            </li>
+                          </ul>
+                          
+                          
+                        </td>
+                        <td>Commercial</td>
+                        <td>
+                          ********14567
+                        </td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                >Disable</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                > Delete</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                            <li
+                              
+                              data-popup="tooltip-custom"
+                              data-bs-placement="top"
+                              class="avatar avatar-xs pull-up"
+                              title="HDFC">
+                              <img src="3.png" alt="Avatar" class="rounded-circle" />
+                              HDFC Bank
+                            </li>
+                          </ul>
+                          
+                          
+                        </td>
+                        <td>Commercial</td>
+                        <td>
+                          ********12098
+                        </td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                > Disable</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                > Delete</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Added Acc-->
+
                 
 
                 <!-- Back account-->
-                <div class="flex-row">
+                <div class="flex-row mt-4">
                   <div class="card mb-4">
                     <h5 class="card-header" style="color: #6d18f4ce;">Add Bank Account </h5>
                     <div class="card-body " >
@@ -489,15 +624,8 @@
                                 <option value="Yes Bank">Yes Bank</option>
                               </select>
                             </div>
-                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
-                              <label class="form-label" >Other Bank Specify *</label>
-                              <select class="form-select" required>
-                                <option value="">-- Select --</option>
-                                <option>No</option>
-                                <option>Yes</option>
-                              </select>
-                            </div>
-                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
+                            
+                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
                               <label class="form-label" >Bank Type *</label>
                               <select class="form-select" required>
                                 <option value="">-- Select --</option>
@@ -507,7 +635,15 @@
                                 <option>Cooperative Banks</option>
                               </select>
                             </div>
-                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
+                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
+                              <label class="form-label" >Other Bank Specify *</label>
+                              <select class="form-select" required>
+                                <option value="">-- Select --</option>
+                                <option>No</option>
+                                <option>Yes</option>
+                              </select>
+                            </div>
+                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
                               <label class="form-label" for="numericInput"> Account Number <span >*</span></label>
                               <input
                                 type="text"
@@ -557,142 +693,6 @@
 
                   <!-- Bank Account-->
 
-                  <!--Added Acc-->
-              <div class="card">
-                <h5 class="card-header">Your Bank Accounts 😇</h5>
-                <div class="table-responsive text-nowrap">
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th>Bank Name</th>
-                        <th>Bank Type</th>
-                        <th>Account No.</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      
-                      <tr>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="indian bank">
-                              <img src="imgs/1.png" alt="Avatar" class="rounded-circle" />
-                              Indian Bank
-                            </li>
-                          </ul>
-                          
-                          
-                        </td>
-                        <td>Government public sector</td>
-                        <td>
-                          ********32453
-                        </td>
-                        <td><span class="badge bg-label-primary me-1">Active</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="ti ti-dots-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ></i>Disable</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                > Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Canara Bank">
-                              <img src="imgs/2.png" alt="Avatar" class="rounded-circle" />
-                              Canara Bank
-                            </li>
-                          </ul>
-                          
-                          
-                        </td>
-                        <td>Commercial</td>
-                        <td>
-                          ********14567
-                        </td>
-                        <td><span class="badge bg-label-primary me-1">Active</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="ti ti-dots-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                >Disable</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                > Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="HDFC">
-                              <img src="imgs/3.png" alt="Avatar" class="rounded-circle" />
-                              HDFC Bank
-                            </li>
-                          </ul>
-                          
-                          
-                        </td>
-                        <td>Commercial</td>
-                        <td>
-                          ********12098
-                        </td>
-                        <td><span class="badge bg-label-primary me-1">Active</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="ti ti-dots-vertical"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                > Disable</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                > Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      
-                      
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!--/ Added Acc-->
-
-                    
                  
                   
                 </div>
