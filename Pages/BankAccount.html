@@ -449,7 +449,7 @@
                     <thead>
                       <tr>
                         <th>Bank Name</th>
-                        <th>Bank Type</th>
+                        <th>Account Type</th>
                         <th>Account No.</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -466,14 +466,14 @@
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
                               title="indian bank">
-                              <img src="1.png" alt="Avatar" class="rounded-circle" />
+                              <img src="imgs/1.png" alt="Avatar" class="rounded-circle" />
                               Indian Bank
                             </li>
                           </ul>
                           
                           
                         </td>
-                        <td>Government public sector</td>
+                        <td>Savings Account</td>
                         <td>
                           ********32453
                         </td>
@@ -503,14 +503,14 @@
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
                               title="Canara Bank">
-                              <img src="2.png" alt="Avatar" class="rounded-circle" />
+                              <img src="imgs/2.png" alt="Avatar" class="rounded-circle" />
                               Canara Bank
                             </li>
                           </ul>
                           
                           
                         </td>
-                        <td>Commercial</td>
+                        <td>Personal Account</td>
                         <td>
                           ********14567
                         </td>
@@ -540,14 +540,14 @@
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
                               title="HDFC">
-                              <img src="3.png" alt="Avatar" class="rounded-circle" />
+                              <img src="imgs/3.png" alt="Avatar" class="rounded-circle" />
                               HDFC Bank
                             </li>
                           </ul>
                           
                           
                         </td>
-                        <td>Commercial</td>
+                        <td>Cheque</td>
                         <td>
                           ********12098
                         </td>
@@ -575,31 +575,23 @@
                 </div>
               </div>
               <!--/ Added Acc-->
-
-                
-
-                <!-- Back account-->
-                <div class="flex-row mt-4">
-                  <div class="card mb-4">
-                    <h5 class="card-header" style="color: #6d18f4ce;">Add Bank Account </h5>
-                    <div class="card-body " >
-                      <div class="row">
-                       
-                        <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0 mt-1">
-                          <a href="BankAccount.html" target="_blank">
-                          <button class="btn btn-primary">
-                            <i class="ti ti-plus me-1"></i>
-                            <span class="align-middle">Add New Account</span>
-                          </button>
-                          </a>
-                        </div>
-                      
-                    
-                      </div>
-                      <form id="addNewBank" class="row g-3 mt-3" onsubmit = "return false"> 
-                          <div class="row">
-                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
-                              <label class="form-label" >Select Bank *</label>
+              <!-- Bank Account -->
+                      <div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel4">Add New Account</h5>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form>
+                              <div class="row">
+                                <div class="col mb-3">
+                                  <label class="form-label" >Select Bank *</label>
                               <select  class=" form-select" required >
                                 <option value="">-- Select --</option>
                                 <option value="Axis Bank">Axis Bank</option>
@@ -623,77 +615,92 @@
                                 <option value="Union Bank of India">Union Bank of India</option>
                                 <option value="Yes Bank">Yes Bank</option>
                               </select>
-                            </div>
-                            
-                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
-                              <label class="form-label" >Bank Type *</label>
-                              <select class="form-select" required>
-                                <option value="">-- Select --</option>
-                                <option>Central Bank</option>
-                                <option>State Bank</option>
-                                <option>Regional Rural Banks</option>
-                                <option>Cooperative Banks</option>
-                              </select>
-                            </div>
-                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
-                              <label class="form-label" >Other Bank Specify *</label>
-                              <select class="form-select" required>
-                                <option value="">-- Select --</option>
-                                <option>No</option>
-                                <option>Yes</option>
-                              </select>
-                            </div>
-                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
-                              <label class="form-label" for="numericInput"> Account Number <span >*</span></label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="numericInput"
-                                name="numericInput"
-                                pattern="[0-9]*"
-                                maxlength="18"
-                                placeholder="Enter Acc.No"
-                                required
-                                oninput="validateNumericInput(this)"
-                              />
-                              <div id="validationMessage"></div>
-                            </div>
-                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
-                              <label class="form-label" >IFSC Code *</label>
-                                <input type="text" id="ifscCode" class="form-control" placeholder="Enter IFSC code" maxlength="11" oninput="handleInputChange()">
-                                <p id="statusMessage"></p>
-                            </div>
+                                </div>
+                              </div>
+                              <div class="row g-2">
+                                <div class="col mb-0">
+                                  <label class="form-label" >Account Type *</label>
+                                  <select class="form-select" required>
+                                    <option value="">-- Select --</option>
+                                    <option>Savings Account</option>
+                                    <option>Fixed Deposit</option>
+                                    <option>Debit</option>
+                                    <option>Cheque</option>
+                                    <option>Cash</option>
+                                    <option>Salary Account</option>
+                                  </select>
 
-                            <div class="mb-2 col-lg-6 col-xl-3 col-12 mb-0">
-                              <label for="formFile" class="form-label">Upload  Picture of Acount Passbook / Cheque</label> 
-                              <input class="form-control" type="file" id="formFile "  type="file" name="fileInput"  onchange="handleFileUpload(this.files)">
-                              <label >Pending</label>
-                            </div>
-                          </div>
+                                </div>
+                                <div class="col mb-0">
+                                  <label class="form-label" >Other Bank Specify *</label>
+                                  <select class="form-select" required>
+                                    <option value="">-- Select --</option>
+                                    <option>No</option>
+                                    <option>Yes</option>
+                                  </select>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col mb-0">
+                                      <label class="form-label" for="numericInput"> Account Number <span >*</span></label>
+                                        <input
+                                          type="text"
+                                          class="form-control"
+                                          id="numericInput"
+                                          name="numericInput"
+                                          pattern="[0-9]*"
+                                          maxlength="18"
+                                          placeholder="Enter Acc.No"
+                                          required
+                                          oninput="validateNumericInput(this)"
+                                        />
+                                        <div id="validationMessage"></div>
 
-                          <div class="row">
-                            <div class="col-12 text-center mt-4">
-                              <button type="submit" class="btn btn-primary me-sm-3 me-1">
-                                Submit</button>
-                              <button
-                                type="reset"
+                                    </div>
+                                    <div class="col mb-0">
+                                      <label class="form-label" >IFSC Code *</label>
+                                      <input type="text" id="ifscCode" class="form-control" placeholder="Enter IFSC code" maxlength="11" oninput="handleInputChange()">
+                                      <p id="statusMessage"></p>
+                                      </div>
+                                  
+                                </div>
+                                <div class="row">
+                                  <label for="formFile" class="form-label">Upload  Picture of Acount Passbook / Cheque</label> 
+                                  <input class="form-control" type="file" id="formFile "  type="file" name="fileInput"  onchange="handleFileUpload(this.files)">
+                                  <label >Pending</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button  type="button"
                                 class="btn btn-label-secondary"
-                                data-bs-dismiss=""
+                                data-bs-dismiss="modal"
                                 aria-label="Close">
                                 Cancel
                               </button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                      </form>
+                      <div class="demo-inline-spacing">
+                       
 
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exLargeModal">
+                          <i class="ti ti-plus me-1"></i>
+                          Add New Account
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </div>
+            </div>
+          </div>
+                
 
                
-
-                  <!-- Bank Account-->
-
-                 
                   
                 </div>
               </div>
