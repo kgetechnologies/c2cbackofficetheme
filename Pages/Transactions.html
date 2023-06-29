@@ -38,20 +38,10 @@
     <link rel="stylesheet" href="../assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/node-waves/node-waves.css" />
     <link rel="stylesheet" href="../assets/vendor/libs/typeahead-js/typeahead.css" />
-    <link rel="stylesheet" href="../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-    <link rel="stylesheet" href="../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet" href="../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
-    <link rel="stylesheet" href="../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
-    <link rel="stylesheet" href="../assets/vendor/libs/flatpickr/flatpickr.css" />
-    <!-- Row Group CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css" />
-    <!-- Form Validation -->
-    <link rel="stylesheet" href="../assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
-
+    <link rel="stylesheet" href="../assets/vendor/libs/spinkit/spinkit.css" />
 
     <!-- Page CSS -->
 
@@ -63,220 +53,71 @@
     <script src="../assets/vendor/js/template-customizer.js"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
-    <style>
-        
-    
-       
-    
-        .popup {
-          display: none;
-          position: fixed;
-          z-index: 1;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          overflow: auto;
-          background-color: rgba(0, 0, 0, 0.5);
-        }
-    
-        .popup-content {
-          background-color: #fefefe;
-          margin: 15% auto;
-          padding: 20px;
-          border: 1px solid #888;
-          width: 50%;
-        }
-    
-        .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
-        }
-    
-        .close:hover,
-        .close:focus {
-          color: black;
-          text-decoration: none;
-          cursor: pointer;
-        }
-    
-        .transaction-details {
-          margin-bottom: 20px;
-        }
-    
-        .pagination {
-          margin-top: 20px;
-        }
-    
-        .pagination a {
-          padding: 5px 10px;
-          text-decoration: none;
-          background-color: #f2f2f2;
-          color: #333;
-          border: 1px solid #ccc;
-          margin-right: 5px;
-        }
-    
-        .pagination a.active {
-          background-color: #007bff;
-          color: #fff;
-        }
-      </style>
-      <style>
-       
-      
-        .form-row {
-          margin-bottom: 10px;
-          width: 50%;
-          
-        }
-      
-        .form-row label {
-          font-weight: bold;
-          display: block;
-        }
-      
-        .form-row input[type="number"],
-        .form-row select {
-          width: 97%;
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-        }
-      
-        .form-row .amount-row {
-          display: flex;
-          align-items: center;
-        }
-      
-        .form-row .amount-row input[type="number"] {
-          flex: 1;
-          margin-right: 10px;
-        }
-      
-        .form-row .amount-row .currency {
-          font-weight: bold;
-        }
-      
-        .form-row .charge-row {
-          display: flex;
-          align-items: center;
-        }
-      
-        .form-row .charge-row input[type="number"] {
-          flex: 1;
-          margin-right: 10px;
-        }
-      
-        .form-row .charge-row .percentage {
-          margin-right: 5px;
-        }
-      
-        .form-row .transfer-row {
-          display: flex;
-          align-items: center;
-        }
-      
-        .form-row .transfer-row input[type="number"] {
-          flex: 1;
-          margin-right: 10px;
-        }
-      
-        .form-row .transfer-row .currency {
-          font-weight: bold;
-        }
-      
-        .button-row {
-          text-align: left;
-          margin-top: 20px;
-        }
-      
-        .button-row button {
-          padding: 10px 30px;
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 14px;
-        }
-      
-        .button-row button:hover {
-          background-color: #45a049;
-        }
-      </style>
-    <style>
-      hr{
-        margin: bottom 10px;
-        border-width: 4;
-      }
-      </style>
-      <style>
-        .button-align {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-    </style>
-    <style>
-      .button-right{
-        display: flex;
-        justify-content: flex-end;
-        height: 100%;
-        
-      }
-      .button-right button{
-        margin-right: 200px;
-      }
 
-    .search-bar {
-      display: flex;
-      align-items: center;
-      width: 300px;
-      height: 40px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 5px;
-    }
+    <style>
+     
 
-    .search-icon {
-      margin-right: 5px;
+    .popup {
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: none;
     }
-    .tp h4{
-      margin-top: 20px;
-    }
-
-    .search-input {
-      flex-grow: 1;
+    input[type="submit"],
+    input[type="button"] {
+      padding: 10px 20px;
+      background-color: purple;
+      color: white;
       border: none;
-      outline: none;
+      font-size: 16px;
+      cursor: pointer;
+      width: 49%;
     }
-    </style>
-    <script>
-        function validateNumericInput(input) {
-          var value = input.value;
-      
-          if (!/^[0-9]+$/.test(value)) {
-            document.getElementById("validationMessage").innerHTML =
-              "Invalid input! Only numeric characters are allowed.";
-            input.setCustomValidity("Invalid input");
-          } else {
-            document.getElementById("validationMessage").innerHTML = "";
-            input.setCustomValidity("");
-          }
-        }
-      </script>
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 5px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
     
+
+    .close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
   </head>
 
   <body>
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+     <!-- Layout wrapper -->
+     <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
       <div class="layout-container">
         <!-- Navbar -->
 
@@ -492,9 +333,9 @@
                     </li>
                     
                     <li class="menu-item">
-                      <a href="javascript:void(0);" class="menu-link">
+                      <a href="BankAccount.html" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-file-dollar"></i>
-                        <div data-i18n="Invoice">Invoice</div>
+                        <div data-i18n="Bank Accounts">Bank Accounts</div>
                       </a>
                      
                     </li>
@@ -537,453 +378,138 @@
               
                 <!-- More Detailed Graph -->
                 <li class="menu-item">
-                  <a href="javascript:void(0)" class="menu-link ">
+                  <a href="Graphs.html" class="menu-link ">
                     <i class="menu-icon tf-icons ti ti-chart-bar"></i>
-                    <div data-i18n="Graph">Reports</div>
+                    <div data-i18n="Reports">Reports</div>
                   </a>
                  
                 </li>
               </ul>
             </div>
           </aside>
-            
-            <!-- Content-->
-            
+   
+            <!-- Content -->
+
             <div class="container-xxl flex-grow-1 container-p-y">
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">History/</span>Transactions</h4>
-  
-                 <!-- new transaction-->
-                 <div class="flex-row">
-                    <div class="card mb-4">
-                        <h2 class="card-header">New Transaction</h2>
-                      <div class="card-body " >
-                        <div class="row">
-                          <!-- New Transaction Section -->
-                        
-                            <div class="mb-3">
-                            <div class="  mb-2 col-lg-6 col-xl-4 col-12 mb-0">
-                                <label for="amount">Amount:</label>
-                                <input type="text"
-                                class="form-control"
-                                id="numericInput"
-                                name="numericInput"  required>
-                                <span class="currency">Rs</span>
-                            </div>
-                        </div>
-                        
-                            <div class=" mb-2 col-lg-6 col-xl-6 col-12 mb-0">
-                            <label for="cardType" class="form-label">Card Type:</label>
-                            <select id="cardType" onchange="updateChargePercentage()" class="form-select" required>
-                                <option value="">Select a card type</option>
-                                <option value="Card 1">Card 1</option>
-                                <option value="Card 2">Card 2</option>
-                                <!-- Add more card options -->
-                            </select>
-                            </div>
-                        
-                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
-                            <label for="chargePercentage">Charged %:</label>
-                            <div class="charge-row">
-                                <input type="number" class="form-control" id="chargePercentage" step="0.01" disabled>
-                                <span class="percentage">%</span>
-                            </div>
-                            </div>
-                        
-                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
-                            <label for="chargedAmount">Charged Amount:</label>
-                            <div class="amount-row">
-                                <input type="number" class="form-control" id="chargedAmount" step="0.01" disabled>
-                                <span class="currency">Rs</span>
-                            </div>
-                            </div>
-                        
-                            <div class="mb-2 col-lg-6 col-xl-6 col-12 mb-0">
-                            <label for="transferAmount">Transfer Amount to Bank:</label>
-                            <div class="transfer-row">
-                                <input type="number" class="form-control" id="transferAmount" step="0.01" disabled>
-                                <span class="currency">Rs</span>
-                            </div>
-                            </div>
-                        
-                            <div class="button-row">
-                            <button onclick="calculateTransaction()">Calculate</button>
-                            </div>
-                        
-                        </div>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Shortcuts/</span> Transactions</h4>
 
-                        <hr class="my-5 mb-3" />
-                        <!--Transaction History-->
-
-                        <div class="row">
-                        
-                                <h5 class="card-header">Transactions History</h5>
-                                <div class="table-responsive text-nowrap">
-                                  <table id="transactionTable" class="table table-bordered">
-                                      <thead>
-                                          <tr>
-                                            <th>Date</th>
-                                            <th>ID</th>
-                                            <th>Customer</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                          </tr>
-                                      </thead>
-                                    
-                                    <tbody>
-                                      
-                                      <!-- Transaction rows will be dynamically added here -->
-                                      
-                                      
-                                    </tbody>
-                                  </table>
-                                  <div id="transactionModal" class="popup">
-                                      <div class="popup-content">
-                                        <span class="close" onclick="closeModal()">&times;</span>
-                                        <h3>Transaction Details</h3>
-                                        <div id="transactionDetails" class="transaction-details">
-                                          <!-- Transaction details will be dynamically added here -->
-                                        </div>
-                                      </div>
-                                    </div>
-                                  
-                                    <div id="pagination" class="pagination">
-                                      <!-- Pagination links will be dynamically added here -->
-                                    </div>
-                                  
-                                
-                              </div>
+             
+                <!-- Options-->
+                
+                  <div class="card mb-2" id="card-block">
+                    <h5 class="card-header">Note :<span class="small">You can perform the transaction only after verification</span></h5>
+                    <div class="card-body">
+                      <div class="row mb-2">
+                        <div class="col-md-5"></div>
+                        <div class=" col-md-2">
+                          <button class="btn btn-primary btn-card-block-multiple">Verify Here..</button>
                         </div>
-                       
-                      </div>
+                        <div class="col-md-5"></div>
+                        
                     </div>
+
+                    <div class="row mb-2"> 
+                      <div class="col-md-5"></div>
+                      <div class="col-md-2">
+                         <button class="btn btn-primary" id="newTransactionButton">New Transaction</button>
+                      </div>
+                      <div class="col-md-5"></div>
+
                   </div>
-  
-                 
-  
-                   
-               
-               
-  
-                  
-  
-                    
+                  <div class="row mb-2">
+                    <div class="col-md-5"></div>
+                    <div  class="col-md-2">
+                      <button class="btn btn-primary btn-card-block-custom">View Transactions</button>
+                    </div>
+                    <div class="col-md-5"></div>
+                   </div>
                   </div>
                 </div>
+                <!-- Options-->
+               
               </div>
-              <!--/ Content -->
+
+
+
+
+              <div id="popup" class="popup">
+                <span class="close-icon" onclick="closePopup()"><i class="fas fa-times"></i></span>
+                <h2>New Transaction</h2>
+                <form id="transactionForm">
+                  <div class="form-group">
+                    <label for="transactionType">Transaction Type:</label>
+                    <select id="transactionType" name="transactionType" onchange="setChargesPercentage()">
+                      <option value="bankAccount">Bank Account</option>
+                      <option value="activeApprovedCard">Active & Approved Card</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="text" id="amount" name="amount" oninput="formatAmount(this)">
+                  </div>
+                  <div class="form-group">
+                    <label for="chargesPercentage">Charges (%):</label>
+                    <input type="text" id="chargesPercentage" name="chargesPercentage" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="chargedAmount">Charged Amount:</label>
+                    <input type="text" id="chargedAmount" name="chargedAmount" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="transferAmount">Transfer Amount:</label>
+                    <input type="text" id="transferAmount" name="transferAmount" readonly>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <input type="button"  value="Cancel" onclick="closePopup()">
+                    <input type="submit"  value="Submit">
+                  </div>
+                </form>
+              </div>
+            
+              <script>
+                const chargesPercentages = {
+                  bankAccount: 10,
+                  activeApprovedCard: 5
+                };
+            
+                document.getElementById("transactionForm").addEventListener("submit", function(event) {
+                  event.preventDefault();
+            
+                  const amount = document.getElementById("amount").value;
+                  const chargesPercentage = parseFloat(document.getElementById("chargesPercentage").value);
+                  const chargedAmount = parseFloat(amount) * (chargesPercentage / 100);
+                  const transferAmount = parseFloat(amount) + chargedAmount;
+            
+                  document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
+                  document.getElementById("transferAmount").value = transferAmount.toFixed(2);
+                });
+            
+                function formatAmount(input) {
+                  const formattedValue = input.value.replace(/[^0-9.]/g, "");
+                  input.value = formattedValue;
+                }
+            
+                function setChargesPercentage() {
+                  const transactionType = document.getElementById("transactionType").value;
+                  document.getElementById("chargesPercentage").value = chargesPercentages[transactionType];
+                }
+            
+                function closePopup() {
+                  document.getElementById("popup").style.display = "none";
+                }
+            
+                document.getElementById("newTransactionButton").addEventListener("click", function() {
+                  document.getElementById("popup").style.display = "block";
+                  setChargesPercentage();
+                });
+              </script>
+
+
+
+
   
 
-
-          
-
-            
-  <script>
-   var cardInfo = [
-  { cardType: "Card 1", overridePercentage: null },
-  { cardType: "Card 2", overridePercentage: 5 },
-];
-
-var globalChargePercentage = 2; // Global charge percentage for card types
-
-function calculateTransaction() {
-  var amount = parseFloat(document.getElementById("amount").value);
-  var cardType = document.getElementById("cardType").value;
-  var chargePercentage = getChargePercentage(cardType);
-  var chargedAmount = amount * (chargePercentage / 100);
-  var transferAmount = amount - chargedAmount;
-
-  document.getElementById("chargePercentage").value = chargePercentage + "%";
-  document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
-  document.getElementById("transferAmount").value = transferAmount.toFixed(2);
-}
-
-function updateChargePercentage() {
-  var cardType = document.getElementById("cardType").value;
-  var chargePercentage = getChargePercentage(cardType);
-  document.getElementById("chargePercentage").value = chargePercentage + "%";
-
-  var amount = parseFloat(document.getElementById("amount").value);
-  var chargedAmount = amount * (chargePercentage / 100);
-  var transferAmount = amount - chargedAmount;
-
-  document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
-  document.getElementById("transferAmount").value = transferAmount.toFixed(2);
-}
-
-function getChargePercentage(cardType) {
-  var card = cardInfo.find((card) => card.cardType === cardType);
-  if (card && card.overridePercentage != null) {
-    return card.overridePercentage;
-  } else {
-    // Use the global charge percentage for the card type
-    if (cardType === "Card 1") return globalChargePercentage;
-    else if (cardType === "Card 2") return globalChargePercentage;
-  }
-  return 0;
-}
-
-</script>
-  <script>
-    var customers = [
-      {
-        name: "John Doe",
-        transactions: generateTransactions(50)
-      }
-    ];
-
-    var transactionsPerPage = 5; // Number of transactions to show per page
-    var currentPage = 1; // Current page number
-
-    function generateTransactions(count) {
-      var transactions = [];
-      for (var i = 1; i <= count; i++) {
-        var transaction = {
-          id: "TXN" + i,
-          date: getRandomDate(),
-          amount: getRandomAmount(),
-          status: getRandomStatus(),
-          stages: ["Create", "Link Shared", "Customer Paid", "Validated", "Payment Transferred", "Closed"]
-        };
-        transactions.push(transaction);
-      }
-      return transactions;
-    }
-
-    function getRandomDate() {
-      var year = 2023;
-      var month = Math.floor(Math.random() * 12) + 1;
-      var day = Math.floor(Math.random() * 28) + 1;
-      return year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
-    }
-
-    function getRandomAmount() {
-      return Math.floor(Math.random() * 1000) + 1;
-    }
-
-    function getRandomStatus() {
-      var statuses = ["Pending", "Processing", "Completed", "Failed"];
-      var randomIndex = Math.floor(Math.random() * statuses.length);
-      return statuses[randomIndex];
-    }
-
-    function populateTransactionHistory() {
-      var transactionTable = document.getElementById("transactionTable");
-      var tableBody = transactionTable.getElementsByTagName("tbody")[0];
-      tableBody.innerHTML = "";
-
-      var startIndex = (currentPage - 1) * transactionsPerPage;
-      var endIndex = startIndex + transactionsPerPage;
-      var totalTransactions = 0;
-
-      for (var i = 0; i < customers.length; i++) {
-        var customer = customers[i];
-        var transactions = customer.transactions;
-
-        for (var j = 0; j < transactions.length; j++) {
-          var transaction = transactions[j];
-          totalTransactions++;
-
-          if (totalTransactions > startIndex && totalTransactions <= endIndex) {
-            var row = document.createElement("tr");
-
-            var dateCell = document.createElement("td");
-            dateCell.textContent = transaction.date;
-            row.appendChild(dateCell);
-
-            var idCell = document.createElement("td");
-            idCell.textContent = transaction.id;
-            row.appendChild(idCell);
-
-            var customerCell = document.createElement("td");
-            customerCell.textContent = customer.name;
-            row.appendChild(customerCell);
-
-            var amountCell = document.createElement("td");
-            amountCell.textContent = transaction.amount;
-            row.appendChild(amountCell);
-
-            var statusCell = document.createElement("td");
-            statusCell.textContent = transaction.status;
-            row.appendChild(statusCell);
-
-            var actionsCell = document.createElement("td");
-            var viewButton = document.createElement("button");
-            viewButton.textContent = "View Details";
-            viewButton.setAttribute("onclick", "openModal(" + i + ", " + j + ")");
-            actionsCell.appendChild(viewButton);
-            row.appendChild(actionsCell);
-
-            tableBody.appendChild(row);
-          }
-        }
-      }
-
-      updatePagination(totalTransactions);
-    }
-
-    function updatePagination(totalTransactions) {
-      var pagination = document.getElementById("pagination");
-      pagination.innerHTML = "";
-
-      var totalPages = Math.ceil(totalTransactions / transactionsPerPage);
-
-      if (totalPages > 1) {
-        var prevPage = currentPage - 1;
-        if (prevPage < 1) prevPage = 1;
-        var prevLink = createPaginationLink(prevPage, "Prev");
-        pagination.appendChild(prevLink);
-
-        for (var i = 1; i <= totalPages; i++) {
-          var pageLink = createPaginationLink(i, i.toString());
-          if (i === currentPage) {
-            pageLink.classList.add("active");
-          }
-          pagination.appendChild(pageLink);
-        }
-
-        var nextPage = currentPage + 1;
-        if (nextPage > totalPages) nextPage = totalPages;
-        var nextLink = createPaginationLink(nextPage, "Next");
-        pagination.appendChild(nextLink);
-      }
-    }
-
-    function createPaginationLink(page, label) {
-      var link = document.createElement("a");
-      link.textContent = label;
-      link.setAttribute("href", "#");
-      link.setAttribute("onclick", "changePage(" + page + ")");
-      return link;
-    }
-
-    function changePage(page) {
-      currentPage = page;
-      populateTransactionHistory();
-    }
-
-    function openModal(customerIndex, transactionIndex) {
-      var modal = document.getElementById('transactionModal');
-      var transactionDetails = document.getElementById('transactionDetails');
-      transactionDetails.innerHTML = "";
-
-      var customer = customers[customerIndex];
-      var transaction = customer.transactions[transactionIndex];
-
-      var heading = document.createElement("h4");
-      heading.textContent = "Transaction Details";
-      transactionDetails.appendChild(heading);
-
-      var customerInfo = document.createElement("p");
-      customerInfo.textContent = "Customer: " + customer.name;
-      transactionDetails.appendChild(customerInfo);
-
-      var transactionInfo = document.createElement("p");
-      transactionInfo.textContent = "Transaction ID: " + transaction.id + ", Amount: " + transaction.amount + ", Status: " + transaction.status;
-      transactionDetails.appendChild(transactionInfo);
-
-      var stagesHeading = document.createElement("h5");
-      stagesHeading.textContent = "Transaction Stages";
-      transactionDetails.appendChild(stagesHeading);
-
-      var stagesTable = document.createElement("table");
-      stagesTable.classList.add("transaction-details");
-
-      var stagesTableHeader = document.createElement("thead");
-      var stagesTableHeaderRow = document.createElement("tr");
-      var stagesTableHeaders = ["Stage", "Date", "Time", "Status"];
-
-      for (var i = 0; i < stagesTableHeaders.length; i++) {
-        var headerCell = document.createElement("th");
-        headerCell.textContent = stagesTableHeaders[i];
-        stagesTableHeaderRow.appendChild(headerCell);
-      }
-
-      stagesTableHeader.appendChild(stagesTableHeaderRow);
-      stagesTable.appendChild(stagesTableHeader);
-
-      var stagesTableBody = document.createElement("tbody");
-
-      for (var i = 0; i < transaction.stages.length; i++) {
-        var stage = transaction.stages[i];
-        var row = document.createElement("tr");
-
-        var stageCell = document.createElement("td");
-        stageCell.textContent = stage;
-        row.appendChild(stageCell);
-
-        var dateCell = document.createElement("td");
-        dateCell.textContent = transaction.date;
-        row.appendChild(dateCell);
-
-        var timeCell = document.createElement("td");
-        var time = new Date().toLocaleTimeString();
-        timeCell.textContent = time;
-        row.appendChild(timeCell);
-
-        var statusCell = document.createElement("td");
-        statusCell.textContent = transaction.status;
-        row.appendChild(statusCell);
-
-        stagesTableBody.appendChild(row);
-      }
-
-      stagesTable.appendChild(stagesTableBody);
-      transactionDetails.appendChild(stagesTable);
-
-      modal.style.display = "block";
-    }
-
-    function closeModal() {
-      var modal = document.getElementById('transactionModal');
-      modal.style.display = "none";
-    }
-
-    function calculateTransaction() {
-      var amount = parseFloat(document.getElementById("amount").value);
-      var cardType = document.getElementById("cardType").value;
-      var chargePercentage = getChargePercentage(cardType);
-      var chargedAmount = amount + amount * chargePercentage;
-      var transferAmount = amount * (1 - chargePercentage);
-
-      document.getElementById("chargePercentage").value = chargePercentage;
-      document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
-      document.getElementById("transferAmount").value = transferAmount.toFixed(2);
-    }
-
-    function updateChargePercentage() {
-      var cardType = document.getElementById("cardType").value;
-      var chargePercentage = getChargePercentage(cardType);
-      document.getElementById("chargePercentage").value = chargePercentage;
-
-      var amount = parseFloat(document.getElementById("amount").value);
-      var chargedAmount = amount + amount * chargePercentage;
-      var transferAmount = amount * (1 - chargePercentage);
-
-      document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
-      document.getElementById("transferAmount").value = transferAmount.toFixed(2);
-    }
-
-    function getChargePercentage(cardType) {
-      // You can define your own charge percentages for different card types here
-      if (cardType === "Card 1") return 0.02;
-      else if (cardType === "Card 2") return 0.05;
-      else return 0;
-    }
-
-    // Initial population of transaction history
-    populateTransactionHistory();
-  </script>
-                
-             
-              
-
-              
-
-             
-            
-            <!--/ Content -->
-
+           
            <!-- Footer -->
            <footer class="content-footer footer bg-footer-theme">
             <div class="container-xxl">
@@ -1031,22 +557,13 @@ function getChargePercentage(cardType) {
     <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
-     <!-- Vendors JS -->
-     <script src="../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-     <!-- Flat Picker -->
-     <script src="../assets/vendor/libs/moment/moment.js"></script>
-     <script src="../assets/vendor/libs/flatpickr/flatpickr.js"></script>
-     <!-- Form Validation -->
-     <script src="../assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
-     <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
-     <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
- 
-     <!-- Main JS -->
-     <script src="../assets/js/main.js"></script>
- 
-     <!-- Page JS -->
-     <script src="../assets/js/tables-datatables-basic.js"></script>
-     <script src="../assets/js/app-access-roles.js"></script>
-     <script src="../assets/js/modal-add-role.js"></script>
+    <!-- Vendors JS -->
+    <script src="../assets/vendor/libs/block-ui/block-ui.js"></script>
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="../assets/js/extended-ui-blockui.js"></script>
   </body>
 </html>
