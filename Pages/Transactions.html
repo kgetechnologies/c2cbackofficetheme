@@ -80,6 +80,73 @@
       cursor: pointer;
       width: 49%;
     }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .popup1 {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .transaction-details {
+      margin-bottom: 20px;
+    }
+
+    .pagination {
+      margin-top: 20px;
+    }
+
+    .pagination a {
+      padding: 5px 10px;
+      text-decoration: none;
+      background-color: #f2f2f2;
+      color: #333;
+      border: 1px solid #ccc;
+      margin-right: 5px;
+    }
+
+    .pagination a.active {
+      background-color: #007bff;
+      color: #fff;
+    }
 
     h2 {
       margin-top: 0;
@@ -402,7 +469,7 @@
                       <div class="row mb-2">
                         <div class="col-md-5"></div>
                         <div class=" col-md-2">
-                          <button class="btn btn-primary btn-card-block-multiple">Verify Here..</button>
+                          <button class="btn btn-primary btn-card-block-multiple">Verify Here..👈</button>
                         </div>
                         <div class="col-md-5"></div>
                         
@@ -411,24 +478,97 @@
                     <div class="row mb-2"> 
                       <div class="col-md-5"></div>
                       <div class="col-md-2">
-                         <button class="btn btn-primary" id="newTransactionButton">New Transaction</button>
+                         <button class="btn btn-primary" id="newTransactionButton">New  Transaction</button>
                       </div>
                       <div class="col-md-5"></div>
+                     
 
                   </div>
                   <div class="row mb-2">
+                   
                     <div class="col-md-5"></div>
                     <div  class="col-md-2">
-                      <button class="btn btn-primary btn-card-block-custom">View Transactions</button>
-                    </div>
-                    <div class="col-md-5"></div>
+                       <button
+                         type="button"
+                         class="btn btn-primary btn-card-block-custom"
+                         data-bs-toggle="collapse"
+                         data-bs-target="#accordionIcon-1"
+                         aria-expanded="true"
+                         aria-controls="accordionIcon-1">
+                        View  Transactions
+                       </button>
+                       </div>
+                       <div class="col-md-5"></div>
+                      <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+                    
+ 
+                   
+ 
+                     <div class="accordion-item card ">
+                      
+                       </h2>
+                       <div
+                         id="accordionIcon-1"
+                         class="accordion-collapse collapse show"
+                         data-bs-parent="#accordionIcon">
+                         <div class="accordion-body">
+                           <!-- Transaction History Section -->
+                       
+                          <h5 >Transaction History<br><span class="small">(you can view details of each transaction in the last column)</span></h5>
+                          <div class="col-md-5 col-xl-5 col-4 col-lg-4">
+                            <label for="Cards" class="form-label">Select Card</label>
+                            <select id="Cards" class="form-select mb-1" name="CardSelect" onchange="generateTransactions(50)">
+                              <option value="">--select--</option>
+                              <option value="PrimaryCard">Master Primary Card ********9856 </option>
+                              <option value="OtherCard">Visa Card ********5896</option>
+                            </select>
+                          </div>
+                          
+                          <div class="table-responsive text-nowrap">  
+                          <table id="transactionTable" >
+
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>ID</th>
+                                  <th>Customer</th>
+                                  <th>Amount</th>
+                                  <th>Status</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- Transaction rows will be dynamically added here -->
+                              </tbody>
+                            </table>
+
+                            <div id="transactionModal" class="popup1">
+                              <div class="popup-content">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <h3>Transaction Details</h3>
+                                <div id="transactionDetails" class="transaction-details">
+                                  <!-- Transaction details will be dynamically added here -->
+                                </div>
+                              </div>
+                            </div>
+
+                            <div id="pagination" class="pagination">
+                              <!-- Pagination links will be dynamically added here -->
+                            </div>
+                            </div>
+                          </div>
+                          </div>
+
+
+                         </div>
+                       </div>
                    </div>
                   </div>
                 </div>
                 <!-- Options-->
                
               </div>
-
+              <!--/View details-->    
 
 
 
@@ -504,12 +644,313 @@
                 });
               </script>
 
-
-
+             
+               
 
   
 
-           
+         
+  <script>
+   var cardInfo = [
+  { cardType: "Card 1", overridePercentage: null },
+  { cardType: "Card 2", overridePercentage: 5 },
+];
+
+var globalChargePercentage = 2; // Global charge percentage for card types
+
+function calculateTransaction() {
+  var amount = parseFloat(document.getElementById("amount").value);
+  var cardType = document.getElementById("cardType").value;
+  var chargePercentage = getChargePercentage(cardType);
+  var chargedAmount = amount * (chargePercentage / 100);
+  var transferAmount = amount - chargedAmount;
+
+  document.getElementById("chargePercentage").value = chargePercentage + "%";
+  document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
+  document.getElementById("transferAmount").value = transferAmount.toFixed(2);
+}
+
+function updateChargePercentage() {
+  var cardType = document.getElementById("cardType").value;
+  var chargePercentage = getChargePercentage(cardType);
+  document.getElementById("chargePercentage").value = chargePercentage + "%";
+
+  var amount = parseFloat(document.getElementById("amount").value);
+  var chargedAmount = amount * (chargePercentage / 100);
+  var transferAmount = amount - chargedAmount;
+
+  document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
+  document.getElementById("transferAmount").value = transferAmount.toFixed(2);
+}
+
+function getChargePercentage(cardType) {
+  var card = cardInfo.find((card) => card.cardType === cardType);
+  if (card && card.overridePercentage != null) {
+    return card.overridePercentage;
+  } else {
+    // Use the global charge percentage for the card type
+    if (cardType === "Card 1") return globalChargePercentage;
+    else if (cardType === "Card 2") return globalChargePercentage;
+  }
+  return 0;
+}
+
+</script>
+  <script>
+    var customers = [
+      {
+        name: "John Doe",
+        transactions: generateTransactions(50)
+      }
+    ];
+
+    var transactionsPerPage = 5; // Number of transactions to show per page
+    var currentPage = 1; // Current page number
+
+    function generateTransactions(count) {
+      var transactions = [];
+      for (var i = 1; i <= count; i++) {
+        var transaction = {
+          id: "TXN" + i,
+          date: getRandomDate(),
+          amount: getRandomAmount(),
+          status: getRandomStatus(),
+          stages: ["Create", "Link Shared", "Customer Paid", "Validated", "Payment Transferred", "Closed"]
+        };
+        transactions.push(transaction);
+      }
+      return transactions;
+    }
+
+    function getRandomDate() {
+      var year = 2023;
+      var month = Math.floor(Math.random() * 12) + 1;
+      var day = Math.floor(Math.random() * 28) + 1;
+      return year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
+    }
+
+    function getRandomAmount() {
+      return Math.floor(Math.random() * 1000) + 1;
+    }
+
+    function getRandomStatus() {
+      var statuses = ["Pending", "Processing", "Completed", "Failed"];
+      var randomIndex = Math.floor(Math.random() * statuses.length);
+      return statuses[randomIndex];
+    }
+
+    function populateTransactionHistory() {
+      var transactionTable = document.getElementById("transactionTable");
+      var tableBody = transactionTable.getElementsByTagName("tbody")[0];
+      tableBody.innerHTML = "";
+
+      var startIndex = (currentPage - 1) * transactionsPerPage;
+      var endIndex = startIndex + transactionsPerPage;
+      var totalTransactions = 0;
+
+      for (var i = 0; i < customers.length; i++) {
+        var customer = customers[i];
+        var transactions = customer.transactions;
+
+        for (var j = 0; j < transactions.length; j++) {
+          var transaction = transactions[j];
+          totalTransactions++;
+
+          if (totalTransactions > startIndex && totalTransactions <= endIndex) {
+            var row = document.createElement("tr");
+
+            var dateCell = document.createElement("td");
+            dateCell.textContent = transaction.date;
+            row.appendChild(dateCell);
+
+            var idCell = document.createElement("td");
+            idCell.textContent = transaction.id;
+            row.appendChild(idCell);
+
+            var customerCell = document.createElement("td");
+            customerCell.textContent = customer.name;
+            row.appendChild(customerCell);
+
+            var amountCell = document.createElement("td");
+            amountCell.textContent = transaction.amount;
+            row.appendChild(amountCell);
+
+            var statusCell = document.createElement("td");
+            statusCell.textContent = transaction.status;
+            row.appendChild(statusCell);
+
+            var actionsCell = document.createElement("td");
+            var viewButton = document.createElement("button");
+            viewButton.textContent = "View Details";
+            viewButton.setAttribute("onclick", "openModal(" + i + ", " + j + ")");
+            actionsCell.appendChild(viewButton);
+            row.appendChild(actionsCell);
+
+            tableBody.appendChild(row);
+          }
+        }
+      }
+
+      updatePagination(totalTransactions);
+    }
+
+    function updatePagination(totalTransactions) {
+      var pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      var totalPages = Math.ceil(totalTransactions / transactionsPerPage);
+
+      if (totalPages > 1) {
+        var prevPage = currentPage - 1;
+        if (prevPage < 1) prevPage = 1;
+        var prevLink = createPaginationLink(prevPage, "Prev");
+        pagination.appendChild(prevLink);
+
+        for (var i = 1; i <= totalPages; i++) {
+          var pageLink = createPaginationLink(i, i.toString());
+          if (i === currentPage) {
+            pageLink.classList.add("active");
+          }
+          pagination.appendChild(pageLink);
+        }
+
+        var nextPage = currentPage + 1;
+        if (nextPage > totalPages) nextPage = totalPages;
+        var nextLink = createPaginationLink(nextPage, "Next");
+        pagination.appendChild(nextLink);
+      }
+    }
+
+    function createPaginationLink(page, label) {
+      var link = document.createElement("a");
+      link.textContent = label;
+      link.setAttribute("href", "#");
+      link.setAttribute("onclick", "changePage(" + page + ")");
+      return link;
+    }
+
+    function changePage(page) {
+      currentPage = page;
+      populateTransactionHistory();
+    }
+
+    function openModal(customerIndex, transactionIndex) {
+      var modal = document.getElementById('transactionModal');
+      var transactionDetails = document.getElementById('transactionDetails');
+      transactionDetails.innerHTML = "";
+
+      var customer = customers[customerIndex];
+      var transaction = customer.transactions[transactionIndex];
+
+      var heading = document.createElement("h4");
+      heading.textContent = "Transaction Details";
+      transactionDetails.appendChild(heading);
+
+      var customerInfo = document.createElement("p");
+      customerInfo.textContent = "Customer: " + customer.name;
+      transactionDetails.appendChild(customerInfo);
+
+      var transactionInfo = document.createElement("p");
+      transactionInfo.textContent = "Transaction ID: " + transaction.id + ", Amount: " + transaction.amount + ", Status: " + transaction.status;
+      transactionDetails.appendChild(transactionInfo);
+
+      var stagesHeading = document.createElement("h5");
+      stagesHeading.textContent = "Transaction Stages";
+      transactionDetails.appendChild(stagesHeading);
+
+      var stagesTable = document.createElement("table");
+      stagesTable.classList.add("transaction-details");
+
+      var stagesTableHeader = document.createElement("thead");
+      var stagesTableHeaderRow = document.createElement("tr");
+      var stagesTableHeaders = ["Stage", "Date", "Time", "Status"];
+
+      for (var i = 0; i < stagesTableHeaders.length; i++) {
+        var headerCell = document.createElement("th");
+        headerCell.textContent = stagesTableHeaders[i];
+        stagesTableHeaderRow.appendChild(headerCell);
+      }
+
+      stagesTableHeader.appendChild(stagesTableHeaderRow);
+      stagesTable.appendChild(stagesTableHeader);
+
+      var stagesTableBody = document.createElement("tbody");
+
+      for (var i = 0; i < transaction.stages.length; i++) {
+        var stage = transaction.stages[i];
+        var row = document.createElement("tr");
+
+        var stageCell = document.createElement("td");
+        stageCell.textContent = stage;
+        row.appendChild(stageCell);
+
+        var dateCell = document.createElement("td");
+        dateCell.textContent = transaction.date;
+        row.appendChild(dateCell);
+
+        var timeCell = document.createElement("td");
+        var time = new Date().toLocaleTimeString();
+        timeCell.textContent = time;
+        row.appendChild(timeCell);
+
+        var statusCell = document.createElement("td");
+        statusCell.textContent = transaction.status;
+        row.appendChild(statusCell);
+
+        stagesTableBody.appendChild(row);
+      }
+
+      stagesTable.appendChild(stagesTableBody);
+      transactionDetails.appendChild(stagesTable);
+
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('transactionModal');
+      modal.style.display = "none";
+    }
+
+    function calculateTransaction() {
+      var amount = parseFloat(document.getElementById("amount").value);
+      var cardType = document.getElementById("cardType").value;
+      var chargePercentage = getChargePercentage(cardType);
+      var chargedAmount = amount + amount * chargePercentage;
+      var transferAmount = amount * (1 - chargePercentage);
+
+      document.getElementById("chargePercentage").value = chargePercentage;
+      document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
+      document.getElementById("transferAmount").value = transferAmount.toFixed(2);
+    }
+
+    function updateChargePercentage() {
+      var cardType = document.getElementById("cardType").value;
+      var chargePercentage = getChargePercentage(cardType);
+      document.getElementById("chargePercentage").value = chargePercentage;
+
+      var amount = parseFloat(document.getElementById("amount").value);
+      var chargedAmount = amount + amount * chargePercentage;
+      var transferAmount = amount * (1 - chargePercentage);
+
+      document.getElementById("chargedAmount").value = chargedAmount.toFixed(2);
+      document.getElementById("transferAmount").value = transferAmount.toFixed(2);
+    }
+
+    function getChargePercentage(cardType) {
+      // You can define your own charge percentages for different card types here
+      if (cardType === "Card 1") return 0.02;
+      else if (cardType === "Card 2") return 0.05;
+      else return 0;
+    }
+
+    // Initial population of transaction history
+    populateTransactionHistory();
+  </script>
+
+
+           <!--/Content-->
+
+
            <!-- Footer -->
            <footer class="content-footer footer bg-footer-theme">
             <div class="container-xxl">
@@ -557,13 +998,24 @@
     <script src="../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
-    <!-- Vendors JS -->
-    <script src="../assets/vendor/libs/block-ui/block-ui.js"></script>
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="../assets/js/extended-ui-blockui.js"></script>
+     <!-- Vendors JS -->
+     <script src="../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+     <!-- Flat Picker -->
+     <script src="../assets/vendor/libs/moment/moment.js"></script>
+     <script src="../assets/vendor/libs/flatpickr/flatpickr.js"></script>
+     <!-- Form Validation -->
+     <script src="../assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
+     <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
+     <script src="../assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
+ 
+     <!-- Main JS -->
+     <script src="../assets/js/main.js"></script>
+ 
+     <!-- Page JS -->
+     <script src="../assets/vendor/libs/block-ui/block-ui.js"></script>
+     <script src="../assets/js/extended-ui-blockui.js"></script>
+     <script src="../assets/js/tables-datatables-basic.js"></script>
+     <script src="../assets/js/app-access-roles.js"></script>
+     <script src="../assets/js/modal-add-role.js"></script>
   </body>
 </html>
